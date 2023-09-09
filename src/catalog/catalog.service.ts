@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { CreateCatalogDto } from './dto/create-catalog.dto';
 import { UpdateCatalogDto } from './dto/update-catalog.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DimProductCatalog } from 'src/catalog/entities/dim-product-catalog.entity';
+import { DimProductCatalog } from './entities/dim-product-catalog.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

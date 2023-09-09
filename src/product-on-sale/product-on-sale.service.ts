@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { CreateProductOnSaleDto } from './dto/create-product-on-sale.dto';
 import { UpdateProductOnSaleDto } from './dto/update-product-on-sale.dto';
-import { FactProductOnSale } from 'src/product-on-sale/entities/fact-product-on-sale.entity';
+import { FactProductOnSale } from './entities/fact-product-on-sale.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 

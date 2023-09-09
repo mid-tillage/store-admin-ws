@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import { DimEnterprise } from "../../enterprise/entities/dim-enterprise.entity";
 import { FactProductOnSale } from "../../product-on-sale/entities/fact-product-on-sale.entity";
+import { ApiHideProperty, ApiProperty } from "@nestjs/swagger";
 
 @Index("dim_product_pk", ["idProduct"], { unique: true })
 @Entity("dim_product", { schema: "commerce" })
@@ -32,6 +33,7 @@ export class DimProduct {
   @JoinColumn([{ name: "id_enterprise", referencedColumnName: "idEnterprise" }])
   idEnterprise: DimEnterprise;
 
+  @ApiHideProperty()
   @OneToMany(
     () => FactProductOnSale,
     (factProductOnSale) => factProductOnSale.idProduct

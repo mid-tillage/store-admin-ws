@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { EnterpriseService } from './enterprise.service';
 import { EnterpriseController } from './enterprise.controller';
-import { DimEnterprise } from 'src/enterprise/entities/dim-enterprise.entity';
+import { DimEnterprise } from './entities/dim-enterprise.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({

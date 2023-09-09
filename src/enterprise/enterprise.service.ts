@@ -1,10 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { CreateEnterpriseDto } from './dto/create-enterprise.dto';
 import { UpdateEnterpriseDto } from './dto/update-enterprise.dto';
-import { DimEnterprise } from 'src/enterprise/entities/dim-enterprise.entity';
+import { DimEnterprise } from './entities/dim-enterprise.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Enterprise } from './entities/enterprise.entity';
 
 @Injectable()
 export class EnterpriseService {

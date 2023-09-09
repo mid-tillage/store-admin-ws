@@ -3,8 +3,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DimProduct } from 'src/product/entities/dim-product.entity';
-import { ProductResponse } from './dto/product-response.dto';
+import { DimProduct } from './entities/dim-product.entity';
 
 @Injectable()
 export class ProductService {
@@ -15,16 +14,9 @@ export class ProductService {
     private productRepository: Repository<DimProduct>,
   ) { }
 
-  create(createProductDto: CreateProductDto): ProductResponse {
-    // this.logger.log('This action adds a new product');
-    // return this.productRepository.create(createProductDto);
-    const p: ProductResponse {
-      description = "asd",
-      idEnterprise = 1,
-      idProduct = 1,
-      name = "test"
-    };
-    return p;
+  create(createProductDto: CreateProductDto) {
+    this.logger.log('This action adds a new product');
+    return this.productRepository.create(createProductDto);
   }
 
   async findAll() {
@@ -39,7 +31,7 @@ export class ProductService {
 
   update(id: number, updateProductDto: UpdateProductDto) {
     this.logger.log(`This action updates a #${id} product`);
-    return this.productRepository.findOneBy({ idProduct: id });
+    return this.productRepository.update({ idProduct: id }, updateProductDto );
   }
 
   async remove(id: number) {

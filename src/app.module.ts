@@ -6,20 +6,23 @@ import { CatalogModule } from './catalog/catalog.module';
 import { EnterpriseModule } from './enterprise/enterprise.module';
 import { ProductOnSaleModule } from './product-on-sale/product-on-sale.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ProductModule, CatalogModule, EnterpriseModule, ProductOnSaleModule, TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: '1234',
-    database: 'tienda-juegos-db',
-    schema: 'commerce',
-    synchronize: false,
-    logging: true,
-    autoLoadEntities: true,
-  })],
+  imports: [
+    ConfigModule.forRoot({}),
+    ProductModule, CatalogModule, EnterpriseModule, ProductOnSaleModule, TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_TIENDA_HOST,
+      port: Number(process.env.DB_TIENDA_POST),
+      username: process.env.DB_TIENDA_USERNAME,
+      password: process.env.DB_TIENDA_PASSWORD,
+      database: process.env.DB_TIENDA_DATABASE,
+      schema: process.env.DB_TIENDA_SCHEMA,
+      synchronize: false,
+      logging: process.env.DB_TIENDA_LOGGING === 'true',
+      autoLoadEntities: true,
+    })],
   controllers: [AppController],
   providers: [AppService],
 })

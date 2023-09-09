@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ProductController } from './product.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DimProduct } from 'src/product/entities/dim-product.entity';
+import { DimProduct } from './entities/dim-product.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([DimProduct])],
