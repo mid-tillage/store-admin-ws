@@ -15,27 +15,27 @@ export class CatalogService {
   ) { }
 
   async create(createCatalogDto: CreateCatalogDto) {
-    this.logger.debug('This action adds a new catalog:' + { createCatalogDto });
+    this.logger.log('This action adds a new catalog:' + { createCatalogDto });
     return await this.catalogRepository.create(createCatalogDto);
   }
 
   async findAll() {
-    this.logger.debug('This action returns all catalog');
+    this.logger.log('This action returns all catalog');
     return await this.catalogRepository.find();
   }
 
   async findOne(id: number) {
-    this.logger.debug(`This action returns a #${id} catalog`);
+    this.logger.log(`This action returns a #${id} catalog`);
     return await this.catalogRepository.findBy({ idProductCatalog: id });
   }
 
   async update(id: number, updateCatalogDto: UpdateCatalogDto) {
-    this.logger.debug(`This action updates a #${id} catalog`);
+    this.logger.log(`This action updates a #${id} catalog`);
     return await this.catalogRepository.update({ idProductCatalog: id }, updateCatalogDto);
   }
 
   async remove(id: number) {
-    this.logger.debug(`This action removes a #${id} catalog`);
+    this.logger.log(`This action removes a #${id} catalog`);
     const productCatalog = await this.catalogRepository.findBy({ idProductCatalog: id });
     return await this.catalogRepository.remove(productCatalog);
   }
