@@ -15,8 +15,9 @@ export class CatalogService {
   ) { }
 
   async create(createCatalogDto: CreateCatalogDto) {
-    this.logger.log('This action adds a new catalog:' + { createCatalogDto });
-    return await this.catalogRepository.create(createCatalogDto);
+    this.logger.log('This action adds a new catalog:');
+    this.logger.log({ createCatalogDto });
+    return await this.catalogRepository.save(createCatalogDto);
   }
 
   async findAll() {
@@ -27,6 +28,11 @@ export class CatalogService {
   async findOne(id: number) {
     this.logger.log(`This action returns a #${id} catalog`);
     return await this.catalogRepository.findBy({ idProductCatalog: id });
+  }
+
+  async findOneByName(name: string) {
+    this.logger.log(`This action returns a ${name} catalog`);
+    return await this.catalogRepository.findOneBy({ name: name});
   }
 
   async update(id: number, updateCatalogDto: UpdateCatalogDto) {

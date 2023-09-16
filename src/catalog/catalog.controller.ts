@@ -5,7 +5,7 @@ import { UpdateCatalogDto } from './dto/update-catalog.dto';
 
 @Controller('catalog')
 export class CatalogController {
-  constructor(private readonly catalogService: CatalogService) {}
+  constructor(private readonly catalogService: CatalogService) { }
 
   @Post()
   create(@Body() createCatalogDto: CreateCatalogDto) {
@@ -20,6 +20,12 @@ export class CatalogController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.catalogService.findOne(+id);
+  }
+
+  @Post('search')
+  findOneByName(@Body() catalog: any) {
+    console.log(catalog)
+    return this.catalogService.findOneByName(catalog.name);
   }
 
   @Patch(':id')
