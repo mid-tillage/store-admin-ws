@@ -16,7 +16,7 @@ export class ProductService {
 
   create(createProductDto: CreateProductDto) {
     this.logger.log('This action adds a new product');
-    return this.productRepository.create(createProductDto);
+    return this.productRepository.save(createProductDto);
   }
 
   async findAll() {

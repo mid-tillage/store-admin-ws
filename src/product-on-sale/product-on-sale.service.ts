@@ -16,12 +16,14 @@ export class ProductOnSaleService {
 
   create(createProductOnSaleDto: CreateProductOnSaleDto) {
     this.logger.log('This action adds a new productOnSale');
-    return this.productOnSaleService.create(createProductOnSaleDto);
+    return this.productOnSaleService.save(createProductOnSaleDto);
   }
 
   findAll() {
     this.logger.log(`This action returns all productOnSale`);
-    return this.productOnSaleService.find();
+    return this.productOnSaleService.find({
+      relations: [ 'product' ]
+    });
   }
 
   findOne(id: number) {

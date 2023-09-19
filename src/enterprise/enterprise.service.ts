@@ -16,7 +16,7 @@ export class EnterpriseService {
 
   create(createEnterpriseDto: CreateEnterpriseDto) {
     this.logger.log('This action adds a new enterprise');
-    return this.enterpriseRepository.create(createEnterpriseDto);
+    return this.enterpriseRepository.save(createEnterpriseDto);
   }
 
   findAll() {

@@ -32,7 +32,7 @@ export class CatalogService {
 
   async findOneByName(name: string) {
     this.logger.log(`This action returns a ${name} catalog`);
-    return await this.catalogRepository.findOneBy({ name: name});
+    return await this.catalogRepository.findOneBy({ name: name });
   }
 
   async update(id: number, updateCatalogDto: UpdateCatalogDto) {

@@ -15,6 +15,9 @@ export class FactProductOnSale {
   @PrimaryGeneratedColumn({ type: "integer", name: "id_product_on_sale" })
   idProductOnSale: number;
 
+  @Column("character varying", { name: "title" })
+  title: string;
+
   @Column("integer", { name: "price" })
   price: number;
 
@@ -38,7 +41,7 @@ export class FactProductOnSale {
 
   @ManyToOne(() => DimProduct, (dimProduct) => dimProduct.factProductOnSales)
   @JoinColumn([{ name: "id_product", referencedColumnName: "idProduct" }])
-  idProduct: DimProduct;
+  product: DimProduct;
 
   @ManyToOne(
     () => DimProductCatalog,

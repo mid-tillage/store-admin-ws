@@ -36,7 +36,7 @@ export class DimProduct {
   @ApiHideProperty()
   @OneToMany(
     () => FactProductOnSale,
-    (factProductOnSale) => factProductOnSale.idProduct
+    (factProductOnSale) => factProductOnSale.product
   )
   factProductOnSales: FactProductOnSale[];
 }
