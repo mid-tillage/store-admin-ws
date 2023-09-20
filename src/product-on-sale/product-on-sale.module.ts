@@ -4,7 +4,7 @@ import { ProductOnSaleController } from './product-on-sale.controller';
 import { FactProductOnSale } from './entities/fact-product-on-sale.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EngineService } from 'src/shared/engine/engine.service';
-import { HttpModule, HttpService } from '@nestjs/axios';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
