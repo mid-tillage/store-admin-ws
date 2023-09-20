@@ -21,7 +21,7 @@ export class ProductService {
 
   async findAll() {
     this.logger.log(`This action returns all product`);
-    return await this.productRepository.find();
+    return await this.productRepository.find({ relations: ['enterprise'] });
   }
 
   findOne(id: number) {
@@ -31,7 +31,7 @@ export class ProductService {
 
   update(id: number, updateProductDto: UpdateProductDto) {
     this.logger.log(`This action updates a #${id} product`);
-    return this.productRepository.update({ idProduct: id }, updateProductDto );
+    return this.productRepository.update({ idProduct: id }, updateProductDto);
   }
 
   async remove(id: number) {

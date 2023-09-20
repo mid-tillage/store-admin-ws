@@ -18,6 +18,6 @@ export class DimEnterprise {
   name: string;
 
   @ApiHideProperty()
-  @OneToMany(() => DimProduct, (dimProduct) => dimProduct.idEnterprise)
+  @OneToMany(() => DimProduct, (dimProduct) => dimProduct.enterprise)
   dimProducts: DimProduct[];
 }

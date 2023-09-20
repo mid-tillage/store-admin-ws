@@ -22,13 +22,16 @@ export class ProductOnSaleService {
   findAll() {
     this.logger.log(`This action returns all productOnSale`);
     return this.productOnSaleService.find({
-      relations: [ 'product' ]
+      relations: ['product']
     });
   }
 
   findOne(id: number) {
     this.logger.log(`This action returns a #${id} productOnSale`);
-    return this.productOnSaleService.findOneBy({ idProductOnSale: id });
+    return this.productOnSaleService.findOne({
+      where: { idProductOnSale: id },
+      relations: ['product', 'catalog']
+    });
   }
 
   update(id: number, updateProductOnSaleDto: UpdateProductOnSaleDto) {

@@ -31,7 +31,7 @@ export class DimProduct {
 
   @ManyToOne(() => DimEnterprise, (dimEnterprise) => dimEnterprise.dimProducts)
   @JoinColumn([{ name: "id_enterprise", referencedColumnName: "idEnterprise" }])
-  idEnterprise: DimEnterprise;
+  enterprise: DimEnterprise;
 
   @ApiHideProperty()
   @OneToMany(

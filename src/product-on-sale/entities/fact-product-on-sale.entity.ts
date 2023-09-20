@@ -50,5 +50,5 @@ export class FactProductOnSale {
   @JoinColumn([
     { name: "id_product_catalog", referencedColumnName: "idProductCatalog" },
   ])
-  idProductCatalog: DimProductCatalog;
+  catalog: DimProductCatalog;
 }
