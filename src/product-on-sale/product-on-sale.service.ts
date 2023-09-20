@@ -4,6 +4,7 @@ import { UpdateProductOnSaleDto } from './dto/update-product-on-sale.dto';
 import { FactProductOnSale } from './entities/fact-product-on-sale.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { EngineService } from 'src/shared/engine/engine.service';
 
 @Injectable()
 export class ProductOnSaleService {
@@ -12,11 +13,17 @@ export class ProductOnSaleService {
   constructor(
     @InjectRepository(FactProductOnSale)
     private productOnSaleService: Repository<FactProductOnSale>,
+    private readonly engineService: EngineService
   ) { }
 
   create(createProductOnSaleDto: CreateProductOnSaleDto) {
     this.logger.log('This action adds a new productOnSale');
-    return this.productOnSaleService.save(createProductOnSaleDto);
+    this.engineService.sendProductOnSale(createProductOnSaleDto).subscribe({
+      next: this.logger.log,
+      error: this.logger.error,
+      complete: () => this.logger.debug('sendProductOnSale to engine complete.')
+    });
+    // return this.productOnSaleService.save(createProductOnSaleDto);
   }
 
   findAll() {

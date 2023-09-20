@@ -7,6 +7,8 @@ import { EnterpriseModule } from './enterprise/enterprise.module';
 import { ProductOnSaleModule } from './product-on-sale/product-on-sale.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { EngineService } from './shared/engine/engine.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -22,8 +24,12 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: false,
       logging: process.env.DB_TIENDA_LOGGING === 'true',
       autoLoadEntities: true,
+    }),
+    HttpModule.register({
+      timeout: 5000,
+      maxRedirects: 5,
     })],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, EngineService],
 })
 export class AppModule { }
