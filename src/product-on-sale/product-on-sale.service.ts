@@ -12,7 +12,7 @@ export class ProductOnSaleService {
 
   constructor(
     @InjectRepository(FactProductOnSale)
-    private productOnSaleRepository: Repository<FactProductOnSale>,
+    private productOnSaleService: Repository<FactProductOnSale>,
     private readonly engineService: EngineService
   ) { }
 
@@ -28,14 +28,14 @@ export class ProductOnSaleService {
 
   findAll() {
     this.logger.log(`This action returns all productOnSale`);
-    return this.productOnSaleRepository.find({
+    return this.productOnSaleService.find({
       relations: ['product']
     });
   }
 
   findOne(id: number) {
     this.logger.log(`This action returns a #${id} productOnSale`);
-    return this.productOnSaleRepository.findOne({
+    return this.productOnSaleService.findOne({
       where: { idProductOnSale: id },
       relations: ['product', 'catalog']
     });
@@ -43,12 +43,12 @@ export class ProductOnSaleService {
 
   update(id: number, updateProductOnSaleDto: UpdateProductOnSaleDto) {
     this.logger.log(`This action updates a #${id} productOnSale`);
-    return this.productOnSaleRepository.update({ idProductOnSale: id }, updateProductOnSaleDto);
+    return this.productOnSaleService.update({ idProductOnSale: id }, updateProductOnSaleDto);
   }
 
   async remove(id: number) {
     this.logger.log(`This action removes a #${id} productOnSale`);
-    const productOnSale: FactProductOnSale = await this.productOnSaleRepository.findOneBy({ idProductOnSale: id });
-    return this.productOnSaleRepository.remove(productOnSale);
+    const productOnSale: FactProductOnSale = await this.productOnSaleService.findOneBy({ idProductOnSale: id });
+    return this.productOnSaleService.remove(productOnSale);
   }
 }

@@ -7,9 +7,12 @@ export class CreateProductOnSaleDto {
     public title: string;
     public product: {
         idProduct: number;
+        name: string;
+        description: string;
     };
     public catalog: {
         idProductCatalog: number;
+        name: string;
     };
     public price: number;
     public saleStartDatetime: string;
