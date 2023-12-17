@@ -18,5 +18,5 @@ WORKDIR /app
 COPY --from=staging /app/dist ./dist 
 COPY --from=staging /app/package.json /app/package-lock.json ./ 
 RUN npm i --production 
-EXPOSE 3000
+EXPOSE 3040
 CMD ["sh", "-c", "npm run start:prod"]

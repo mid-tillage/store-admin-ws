@@ -7,10 +7,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   const config = new DocumentBuilder()
-    .setTitle('tienda-juegos-swagger')
-    .setDescription('API of tienda-juegos-ws')
+    .setTitle('store-admins-swagger')
+    .setDescription('API of store-admin-ws')
     .setVersion('1.0')
-    .addTag('tienda-juegos')
+    .addTag('store-admin')
     .build();
 
   // await SwaggerModule.loadPluginMetadata(metadata);
