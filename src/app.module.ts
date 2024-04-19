@@ -21,7 +21,7 @@ import { HttpModule } from '@nestjs/axios';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       schema: process.env.DB_SCHEMA,
-      synchronize: false,
+      synchronize: true,
       logging: process.env.DB_LOGGING === 'true',
       autoLoadEntities: true,
     }),

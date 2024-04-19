@@ -26,3 +26,10 @@ spec:
       value: "sale-management-system"
     - name: DB_LOGGING
       value: "true"
+    - name: STORE_ENGINE_ORCHESTRATOR_IP
+      valueFrom:
+        configMapKeyRef:
+          name: store-engine-configmap
+          key: STORE_ENGINE_ORCHESTRATOR_IP
+    - name: STORE_ENGINE_ORCHESTRATOR_PORT
+      value: "2500"

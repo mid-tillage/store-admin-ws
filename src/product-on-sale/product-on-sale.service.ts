@@ -17,7 +17,7 @@ export class ProductOnSaleService {
   ) { }
 
   create(createProductOnSaleDto: CreateProductOnSaleDto) {
-    this.logger.log('This action adds a new productOnSale');
+    this.logger.log(`This action adds a new productOnSale:  ${JSON.stringify(createProductOnSaleDto)}`);
     this.engineService.sendProductOnSale(createProductOnSaleDto).subscribe({
       next: this.logger.log,
       error: this.logger.error,
